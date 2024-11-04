@@ -1,24 +1,53 @@
-/* styles.css */
-
-:root {
-    --background-color: white;
-    --text-color: black;
-}
-
-.dark-mode {
-    --background-color: #0d1117; /* Dark background */
-    --text-color: white;         /* Light text */
-}
-
 body {
-    background-color: var(--background-color);
-    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
+#map {
+    height: 500px;
+    width: 100%;
+}
 /* Other styles... */
-body {
-    transition: background-color 0.3s, color 0.3s;
+
+
+
+.filter-container {
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
 }
-.toggle-dark-mode{
+
+
+
+.filter-container select,
+.filter-container input, button {
+    margin: 10px 0;
+    padding: 10px;
+    width: 200px;
+    border-radius: 10px;
     
+}
+
+#reset-button {
+    background-color: #0471e6;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#reset-button:hover {
+    background-color: #0056b3;
+
+
+}
+
+/* Media Query for larger screens */
+@media (min-width: 768px) {
+    .filter-container {
+        flex-direction: row; /* Horizontal layout on larger screens */
+        justify-content: space-between;
+    }
+
 }
