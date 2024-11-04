@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Map</title>
+    <style>
+        /* Basic styling */
+        #map { height: 500px; width: 100%; }
+        .controls { display: flex; flex-direction: column; max-width: 300px; margin: 10px; }
+        select, input[type="text"], button { margin: 5px; padding: 10px; }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLc6j7YV37nGs3Jc7neMp7M2eaCxtl4EI"></script>
+</head>
+<body>
+     
+<div class="controls">
+    <input type="text" id="location-search" placeholder="Search location...">
+    <select id="country-filter">
+        <option value="">All Countries</option>
+    </select>
+    <select id="category-filter">
+        <option value="">All Categories</option>
+        <option value="Restaurant">Restaurant</option>
+        <option value="Hotel">Hotel</option>
+        <option value="Museum">Museum</option>
+    </select>
+    <button id="reset-button">Clear Selection</button>
+</div>
+<div id="map"></div>s
+</body>
+<script src="script.js"></script>
+</html>
