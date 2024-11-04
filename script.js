@@ -28,14 +28,6 @@ function setupMarkers() {
             position: { lat: location.lat, lng: location.lng },
             map: map,
             title: location.name,
-            icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 10,
-                fillColor: 'blue', // Default color
-                fillOpacity: 1,
-                strokeColor: 'white',
-                strokeWeight: 2
-            }
         });
         marker.locationData = location;
         return marker;
@@ -82,18 +74,7 @@ function filterMarkers(type) {
         filteredMarkers = filteredMarkers.filter(marker => marker.locationData.category === categoryFilter);
     }
 
-    // Set random color for the filtered markers
-    const randomColor = getRandomColor();
-    filteredMarkers.forEach(marker => {
-        marker.setIcon({
-            path: google.maps.SymbolPath.CIRCLE,
-            scale: 10,
-            fillColor: randomColor,
-            fillOpacity: 1,
-            strokeColor: 'white',
-            strokeWeight: 2
-        });
-    });
+    
 
     setMapBounds(filteredMarkers);
     animateMarkers(filteredMarkers);
@@ -120,16 +101,6 @@ function resetFilters() {
     document.getElementById("category-filter").selectedIndex = 0;
     setMapBounds(markers);
     animateMarkers(markers);
-}
-
-// Function to generate a random color
-function getRandomColor() {
-    const letters = '0123456789ABCDEF';
-    let color = '#';
-    for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
 }
 
 // dark mode 
