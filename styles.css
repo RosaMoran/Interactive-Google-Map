@@ -1,0 +1,24 @@
+/* styles.css */
+
+:root {
+    --background-color: white;
+    --text-color: black;
+}
+
+.dark-mode {
+    --background-color: #0d1117; /* Dark background */
+    --text-color: white;         /* Light text */
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}
+
+/* Other styles... */
+body {
+    transition: background-color 0.3s, color 0.3s;
+}
+.toggle-dark-mode{
+    
+}

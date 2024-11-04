@@ -132,5 +132,51 @@ function getRandomColor() {
     return color;
 }
 
+// dark mode 
+
+// Check if the user has a preference for dark mode
+const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Function to apply the appropriate theme
+function applyTheme(isDarkMode) {
+    if (isDarkMode) {
+        document.body.classList.add("dark-mode");
+    } else {
+        document.body.classList.remove("dark-mode");
+    }
+}
+
+// Apply the theme based on the user's preference
+if (mediaQuery.matches) {
+    applyTheme(true); // User prefers dark mode
+} else {
+    applyTheme(false); // Default to light mode
+}
+
+// Add event listener for changes in the preference
+mediaQuery.addEventListener('change', (event) => {
+    applyTheme(event.matches); // Update theme based on the new preference
+});
+
+// Button to toggle dark mode
+const toggleButton = document.getElementById("toggle-dark-mode");
+toggleButton.addEventListener("click", () => {
+    const isDarkMode = document.body.classList.toggle("dark-mode");
+    
+    // Save the user's preference in local storage
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+});
+
+// Load the user's theme preference on page load
+window.onload = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "dark") {
+        applyTheme(true);
+    } else {
+        applyTheme(false);
+    }
+};
+
+
 window.onload = initMap;
 
