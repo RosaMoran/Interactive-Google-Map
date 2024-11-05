@@ -20,8 +20,12 @@ function initMap() {
         center: { lat: 51.1657, lng: 10.4515 },
         zoom: 4,
     });
+
+    
     setupMarkers();
     setupFilters();
+    
+
 }
 
 function setupMarkers() {
@@ -51,11 +55,15 @@ function setupFilters() {
         countryFilter.appendChild(option);
     });
 
+
+    
+
     // Event listeners for filters
     locationSearch.addEventListener("input", () => filterMarkers("location"));
     countryFilter.addEventListener("change", () => filterMarkers("country"));
     categoryFilter.addEventListener("change", () => filterMarkers("category"));
     resetButton.addEventListener("click", resetFilters);
+    
 }
 
 function filterMarkers(type) {
@@ -82,13 +90,12 @@ function filterMarkers(type) {
     animateMarkers(filteredMarkers);
 }
 
+
 function setMapBounds(markers) {
     const bounds = new google.maps.LatLngBounds();
     markers.forEach(marker => bounds.extend(marker.getPosition()));
     map.fitBounds(bounds);
 }
-
-
 
 
 
@@ -101,6 +108,8 @@ function resetFilters() {
     document.getElementById("location-search").value = "";
     document.getElementById("country-filter").selectedIndex = 0;
     document.getElementById("category-filter").selectedIndex = 0;
+
+    
     setMapBounds(markers);
     animateMarkers(markers);
 }
