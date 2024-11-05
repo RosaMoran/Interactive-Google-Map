@@ -9,7 +9,10 @@ const locations = [
     { name: "La Taberna Sanlúcar", lat: 40.41483, lng: -3.70804, country: "Spain", category: "Restaurant" },
     { name: "Hotel Diaa Plus", lat: 40.36636, lng: -3.65418, country: "Spain", category: "Hotel" },
     { name: "Kunsthistorisches Museum Wien", lat: 48.20389, lng: 16.36177, country: "Austria", category: "Museum" },
-    { name: "Geboortehuis van Mozart", lat: 47.80012, lng: 13.04354, country: "Austria", category: "Museum" }
+    { name: "Geboortehuis van Mozart", lat: 47.80012, lng: 13.04354, country: "Austria", category: "Museum" },
+    ,
+    { name: "Takumi Ramen Kitchen", lat: 51.22112, lng: 4.40094, country: "Belgium", category: "Restaurant" },
+    {name: "El Pulgarcito", lat: 50.83712, lng: 4.39926, country: "Belgium", category: "Restaurant" }
 ];
 
 
