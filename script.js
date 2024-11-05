@@ -46,6 +46,20 @@ function setupFilters() {
     const categoryFilter = document.getElementById("category-filter");
     const resetButton = document.getElementById("reset-button");
 
+    // Initialize Google Autocomplete on the location search input
+    const autocomplete = new google.maps.places.Autocomplete(locationSearch);
+    autocomplete.setFields(["addres_components", "geometry"])
+
+    // Listen for place changes
+    autocomplete.addListener("place_changed"), ()=> {
+        const place = autocomplete.getPlace();
+        if (place.geometry){
+            map.setCenter(place.geometry.location);
+            map.setZoom(14); // adjust zoom to fit the selected place
+            filterMarkers("location");
+        }
+    }
+
     // Populate country filter
     const uniqueCountries = [...new Set(locations.map(loc => loc.country))];
     uniqueCountries.forEach(country => {
@@ -55,8 +69,6 @@ function setupFilters() {
         countryFilter.appendChild(option);
     });
 
-
-    
 
     // Event listeners for filters
     locationSearch.addEventListener("input", () => filterMarkers("location"));
@@ -74,7 +86,9 @@ function filterMarkers(type) {
 
     if (type === "location" && locationSearch) {
         filteredMarkers = filteredMarkers.filter(
-            marker => marker.locationData.name.toLowerCase().includes(locationSearch) ||  marker.locationData.country.toLowerCase().includes(locationSearch) || marker.locationData.category.toLowerCase().includes(locationSearch)
+            marker => marker.locationData.name.toLowerCase().includes(locationSearch) || 
+                      marker.locationData.country.toLowerCase().includes(locationSearch) || 
+                      marker.locationData.category.toLowerCase().includes(locationSearch)
         );
     }
     if (countryFilter) {
@@ -84,17 +98,24 @@ function filterMarkers(type) {
         filteredMarkers = filteredMarkers.filter(marker => marker.locationData.category === categoryFilter);
     }
 
-    
-
-    setMapBounds(filteredMarkers);
+    setMapBounds(filteredMarkers); // Adjust map zoom and bounds based on the filtered markers
     animateMarkers(filteredMarkers);
 }
 
 
+
 function setMapBounds(markers) {
     const bounds = new google.maps.LatLngBounds();
+    if(markers.length === 0)return; // do nothing if markers are avialable 
+
+
     markers.forEach(marker => bounds.extend(marker.getPosition()));
     map.fitBounds(bounds);
+
+    const zoomLevel = map.getZoom();
+    if (zoomLevel > 14 ){
+        map.setZoom(14);
+    }
 }
 
 
