@@ -4,15 +4,21 @@ let map, markers = [];
 const locations = [
     { name: "Amsterdam Cafe", lat: 52.38419, lng: 4.86842, country: "Netherlands", category: "Restaurant" },
     { name: "Amsterdam Fine Dining", lat: 52.38023, lng: 4.89194, country: "Netherlands", category: "Restaurant" },
+    { name: "Strandhotel Vigilante Makkum", lat: 53.05152, lng: 5.37997, country: "Netherlands", category: "Hotel" },
+    { name: "Restaurant Maximilians Berlin", lat: 52.51141, lng: 13.38926, country: "Germany", category: "Restaurant" },
     { name: "Hotel Berlin Gendarmenmarkt", lat: 52.51098, lng: 13.39156, country: "Germany", category: "Hotel" },
     { name: "Hilton Berlin", lat: 52.51240, lng: 13.39279, country: "Germany", category: "Hotel" },
     { name: "Pizza Florida", lat: 41.89485, lng: 12.47674, country: "Italy", category: "Restaurant" },
+    { name: "Museo Ferrari", lat: 44.52975, lng: 10.86150, country: "Italy", category: "Museum" },
     { name: "Otivm Hotel", lat: 41.89502, lng: 12.48030, country: "Italy", category: "Hotel" },
     { name: "La Taberna Sanlúcar", lat: 40.41483, lng: -3.70804, country: "Spain", category: "Restaurant" },
     { name: "Hotel Diaa Plus", lat: 40.36636, lng: -3.65418, country: "Spain", category: "Hotel" },
     { name: "Kunsthistorisches Museum Wien", lat: 48.20389, lng: 16.36177, country: "Austria", category: "Museum" },
     { name: "Geboortehuis van Mozart", lat: 47.80012, lng: 13.04354, country: "Austria", category: "Museum" },
+    { name: "MONDI Hotel am Grundlsee", lat: 47.61959, lng: 13.82778, country: "Austria", category: "Hotel" },
     { name: "Takumi Ramen Kitchen", lat: 51.22112, lng: 4.40094, country: "Belgium", category: "Restaurant" },
+    { name: "Koninklijk Museum van het Leger en de Krijgsgeschiedenis", lat: 50.84082, lng: 4.39336, country: "Belgium", category: "Museum" },
+    { name: "Hotel Derby", lat: 50.83941, lng: 4.39984, country: "Belgium", category: "Hotel" },
     { name: "El Pulgarcito", lat: 50.83712, lng: 4.39926, country: "Belgium", category: "Restaurant" }
 ];
 
@@ -57,7 +63,7 @@ function showInfoWindow(marker) {
     
     // Content for the InfoWindow (this can be customized further)
     const contentString = `
-        <div>
+        <div id="infowindow">
             <h3>${locationData.name}</h3>
             <p><strong>Category:</strong> ${locationData.category}</p>
             <p><strong>Country:</strong> ${locationData.country}</p>
