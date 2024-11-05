@@ -6,6 +6,6 @@
 ## <a name="introduction">🤖 Introduction</a>
 
 - 👉 **Description**<br>
- This is an Google Map website with Advanced Filters and Dynamic Zooming.<br>
+ This is an Google Map website with advanced filters and dynamic Zooming.<br>
 
 </div>
